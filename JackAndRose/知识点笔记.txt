@@ -1,0 +1,49 @@
+什么是事务的传播特性?
+那么当我们调用Service层的一个方法的时候它能够保证我们的这个方法中执行的所有的对数据库的更新操作保持在一个事务中，在事务层里面调用的这些方法要么全部成功，要么全部失败。那么事务的传播特性也是从这里说起的。
+如果你在你的Service层的这个方法中，除了调用了Dao层的方法之外，还调用了本类的其他的Service方法，那么在调用其他的Service方
+是解决这个问题的，“事务是会传播的”在Spring中有针对传播特性的多种配置我们大多数情况下只用其中的一种:PROPGATION_REQUIRED：这个配置项的意思是说当我调用service层的方法的时候开启一个事务(具体调用那一层的方法开始创建事务，要看你的aop的配置),那么在调用这个service层里面的其他的方法的时候,如果当前方法产生了事务就用当前方法产生的事务，否则就创建一个新
+的事务。这个工作使由Spring来帮助我们完成的。
+以前没有Spring帮助我们完成事务的时候我们必须自己手动的控制事务，例如当我们项目中仅仅使用hibernate，而没有集成进spring的时候，我们在一个service层中调用其他的业务逻辑方法，为了保证事物必须也要把当前的hibernate
+session传递到下一个方法中，或者采用ThreadLocal的方法，将session传递给下一个方法，其实都是一个目的。现在这个工作由spring来帮助我们完成，就可以让我们更加的专注于我们的业务逻辑。而不用去关心事务的问题。
+默认情况下当发生RuntimeException的情况下，事务才会回滚，所以要注意一下
+如果你在程序发生错误的情况下，有自己的异常处理机制定义自己的Exception，必须从RuntimeException类继承
+这样事务才会回滚！
+
+
+create table dog(
+	id int  auto_increment primary key,
+	name varchar(30)
+)
+insert into 
+select last_insert_id();//返回插入数据的对应的id值
+一·Happy New Year
+所谓回调，就是客户程序C调用服务程序S中的某个函数A，然后S又在某个时候反过来调用C中的某个函数B，对于C来说，这个B便叫做回调函数。
+ObjectMapper objectMapper = new ObjectMapper();//用来将字符串和map进行转换
+ objectMapper.readValue(json, Map.class);//将字符串json转换成map
+objectMapper.writeValueAsString(object);//将Map转换
+
+
+idea的application context
+
+　　eclipse大家应该都用过，eclipse访问项目的路径一般是localhost:8080/projectName, 当把IDE换成idea以后，访问路径一般情况下就变成了localhost:8080,路径没有了后面的项目名。tomcat在发布项目的时候不考虑用虚拟路径的话，一般都是把项目放在webapps里面，这个时候具体放置的位置就会影响访问路径了。如果是直接放在webapps目录下，那么访问路径就是和eclipse相同的访问路径了，但是这时候如果把项目放在tomcat的webapps里的root文件夹下，那么这个时候这个项目就成为了tomcat的默认项目，直接用localhost:8080就可以访问，安装tomcat时检查tomcat是否正常安装出现的项目其实就是root。 
+　　localhost:8080/projectName或者是localhost:8080就是我们平常所说的应用上下文，项目中的路径名都是相对于这个应用上下文来说的。在idea下开发的时候，有时候我们可能需要让访问路径带上项目名，但是idea默认是为每个项目单独配置tomcat的，eclipse是把项目统一放到某个配置好的tomcat中，所以默认配置的访问路径就出现了差别。如何将idea的应用上下文路径也带上项目名呢？ 
+　　我们在build项目以后，在运行时，选择tomcat作为环境的话就会出现下面的界面这里写图片描述
+
+　　我们可以看到默认的游览器打开路径就是localhost，这个时候我们选择deployment,然后点击绿色的加号artifact选择你之前build的项目，会出现以下界面这里写图片描述
+
+可以注意到这时候application context是/，也就是idea默认的上下文，要想让idea的应用上下文改变，这时候将这个application context改成你需要的项目名就行了，改完后如下这里写图片描述这里写图片描述
+
+
+bug:Spring NoSuchBeanDefinitionException 证明spring中没有定义这个类的Bean 如果BeanFactory在Spring Context中没有找到bean的实例，就会抛出这个常见的异常。
+
+<!-- useGeneratedKeys 表示使用自增长的列的值
+         keyProperty表示哪一列的值是自增长的 -->
+    <insert id="insertObject" 
+            parameterType="productType"
+            useGeneratedKeys="true"
+            keyProperty="id">
+
+ 说明：所谓魔法数值，是指在代码中直接出现的数值，而只有在这个数值记述的那部分代码中才能明确了解其含义。
+
+　　魔法数值使代码的可读性大大下降。而且，如果同样的数值多次出现时，到底这些数值是不是带有同样的含义呢，谁也说不清楚。另一方面，如果本来应该使用相同数值的地方，一旦用错了，也很难发现。因此，需要注意以下几点，极力避免使用魔法数值。
+

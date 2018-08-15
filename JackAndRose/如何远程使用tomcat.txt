@@ -1,0 +1,71 @@
+1.远程连接linux，找到tomcat
+使用linux命令，远程连接到linux系统：
+for example:[root@node2 /]# cd /usr/local/tomcat/apache-tomcat-7.0.67-2
+2.停掉已经在运行的web项目
+进入tomcat的bin文件夹，找到shutdown.sh文件，运行这个文件；
+[root@node2 bin]# ./shutdown.sh 
+3.删除原来的web项目
+进入tomcat的webapps文件夹，找到web项目，用linux命令“rm -rf 项目名称”删除web项目。
+4.重新上传新版本wart到tomcat
+这里使用SSH Secure File Transfer Client工具上传文件到linux。如红色箭头所示位置鼠标点击登陆。
+5.开启tomcat运行web项目
+再次进入tomcat的bin目录下面，使用命令运行startup.sh文件，开启tomcat运行web项目。
+[root@node2 bin]# ./startup.sh 
+6.查看logs信息
+进入tomcat的logs目录下，运行命令：tail -200f catalina.out，进入日志信息查看。
+
+
+关于linux的一些命令的笔记：
+
+su (启动用户的权限)
+linux：cd /usr/java 
+cd /usr/tomcat
+ls 显示所有的内容 （比较常用）
+ll 显示所有的内容  （比较常用）
+ls -l 显示所有的内容 
+pwd 显示当前的路径
+cp 名字.txt new名字.txt（备份）
+mkdir 目录名字 （创建文件夹）
+mv 移动到某个路径下for expamle、/usr/java
+mv 名字 new名字（更改名字）
+rm -rf 文件名字 （强力删除）
+Tomcat的使用
+cd /usr/tomcat/bin
+cd ../logs (返回到当前路径下)
+./startup.sh 启动tomcat
+./shutup.sh 关闭tomcat
+ps -ef | grep java (查看tomcat是否启动)
+kill -9 端口号（杀死进程）
+vi/vim for example /etc/profile 修改文件的内容 a（开启修改模式） esc（保存）：wq(退出)
+!q(不保存退出)
+
+rpm -qa|grep lrzsz (看是否安装lrzsz)
+
+rm -f /var/run/yum.pid (安装数据库的时候报 another pid 占用  然后执行这条命令，就可以安装了)
+
+rz (利用xshell 上传文件（PS:前提已经安装lrzsz）,在哪个文件下上传，文件就在哪个文件下 )
+
+systemctl restart mysqld;
+--电子发票的终端密码与口令--
+smrz
+>4bdw_2WOf
+
+打包并压缩文件:“tar -czvf 压缩包名.tar.gz 文件名”
+解压并展开压缩包:“tar -xzvf 压缩包名.tar.gz”
+
+参数    
+作用    
+-c 创建压缩文件    
+-x 解开压缩文件    
+-t 查看压缩包内有那些文件    
+-z 用Gzip压缩或解压    
+-j 用bzip2压缩或解压    
+-v 显示压缩或解压的过程    
+-f 目标文件名    
+-p 保留原始的权限与属性    
+-P 使用绝对路径来压缩    
+-C 指定解压到的目录 
+
+Another app is currently holding the yum lock; waiting for it to exit...
+分析电子发票的定时任务的应用
+ 
