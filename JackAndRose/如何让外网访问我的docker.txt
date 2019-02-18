@@ -1,2 +1,2 @@
-https://www.linuxidc.com/Linux/2017-06/144753.htm
+https://www.linuxidc.com/Linux/2017-06/144753.htm  防火墙
  sudo docker run -p 8079:80 --name portnginx -d nginx
